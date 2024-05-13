@@ -15,7 +15,7 @@ const availableCategories = [
   ),
   Category(
     id: 'c3',
-    title: 'Hamburgers',
+    title: 'Hamburger',
     color: Colors.orange,
   ),
   Category(
