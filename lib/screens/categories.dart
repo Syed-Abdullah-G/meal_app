@@ -7,9 +7,8 @@ import 'package:meal_app/screens/meals.dart';
 import 'package:meal_app/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.onToggleFavorite, required this.availableMeals});
+  const CategoriesScreen({super.key, required this.availableMeals});
 
-  final void Function(Meal meal) onToggleFavorite;
   final List<Meal> availableMeals;
 
   void _selectCategory(BuildContext context, Category category) {
@@ -18,32 +17,29 @@ class CategoriesScreen extends StatelessWidget {
         .toList();
 
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (ctx) => MealsScreen(
-              title: category.title,
-              meals: filteredMeals, onToggleFavorite: onToggleFavorite,
-            )));
+        builder: (ctx) =>
+            MealsScreen(title: category.title, meals: filteredMeals)));
   }
 
   @override
   Widget build(BuildContext context) {
     return GridView(
-        padding: EdgeInsets.all(24),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.5,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        children: [
-          for (final category in availableCategories)
-            CategoryGridItem(
-              category: category,
-              onSelectCategory: () {
-                _selectCategory(context, category);
-              },
-            )
-        ],
-      );
-    
+      padding: EdgeInsets.all(24),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1.5,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+      ),
+      children: [
+        for (final category in availableCategories)
+          CategoryGridItem(
+            category: category,
+            onSelectCategory: () {
+              _selectCategory(context, category);
+            },
+          )
+      ],
+    );
   }
 }
