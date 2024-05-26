@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meal_app/models/meal.dart';
 import 'package:meal_app/screens/meal_details.dart';
 import 'package:meal_app/widgets/meal_item_trait.dart';
@@ -34,12 +35,15 @@ String get affordabilityText {
         },
         child: Stack(
           children: [
-            FadeInImage(fadeInDuration: Duration(milliseconds: 50),
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
+            Hero(
+              tag: meal.id,
+              child: FadeInImage(fadeInDuration: Duration(milliseconds: 50),
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
+              ),
             ),
             Positioned(
               bottom: 0,

@@ -5,6 +5,9 @@ import 'package:meal_app/data/dummy_data.dart';
 import 'package:meal_app/screens/categories.dart';
 import 'package:meal_app/screens/meals.dart';
 import 'package:meal_app/screens/tabs.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:transparent_image/transparent_image.dart';
+
 
 final theme = ThemeData(
   useMaterial3: true,
